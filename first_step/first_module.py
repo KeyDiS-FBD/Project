@@ -7,5 +7,7 @@ html = urlopen("https://ru.wikipedia.org/wiki/" + name)
 doc = BeautifulSoup(html.read(), features = 'lxml');
 for link in doc.find_all('a'):
     word = str(link.get('href'))
-    if(word.find('https', 0, -1) != -1):
-            print(word)
+    if(word.find('wiki', 1, 5) != -1):
+        print('https://ru.wikipedia.org' + word)
+    elif(word.find('https://ru.wikipedia', 0, -1) != -1):
+        print(word)
